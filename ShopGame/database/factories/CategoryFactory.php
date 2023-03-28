@@ -18,7 +18,7 @@ class CategoryFactory extends Factory
     {
         return [
             'user_id' => $this->faker->numberBetween(1, 100),
-            'product_id' => $this->faker->numberBetween(1, 4),
+            'product_id' => $this->faker->numberBetween(1, 2),
             'user_name' => $this->faker->userName,
             'password' => $this->faker->password,
             'sever' => $this->faker->randomElement(['EU', 'NA', 'ASIA']),
@@ -27,7 +27,7 @@ class CategoryFactory extends Factory
             'class' => $this->faker->randomElement(['Thổ', 'Hỏa', 'Dao găm', 'Thủy', 'Lôi']),
             'status' => $this->faker->randomElement(['Đăng kí ảo', 'Đăng kí thật']),
             'detail' => $this->faker->text(100),
-            'image' => $this->faker->imageUrl(640, 480, 'cats', true, 'Faker'),
+            'image' => $this->faker->imageUrl(640, 480, 'cats', true),
             'price' => $this->faker->numberBetween(100000, 1000000),
             'level' => $this->faker->numberBetween(1, 100),
         ];

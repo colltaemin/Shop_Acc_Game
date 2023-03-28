@@ -26,6 +26,7 @@
 </head>
 
 <body class="font-sans antialiased">
+
     <div class="flex">
         <div class="flex-none">
             <x-partials.sidebar>
@@ -34,15 +35,10 @@
         <div class="flex-initial w-full ">
             <x-partials.navbar>
             </x-partials.navbar>
-            <livewire:admin.user-component />
+            <livewire:admin.product-component />
         </div>
 
     </div>
-
-
-
-
-
 
     @livewireScripts
 

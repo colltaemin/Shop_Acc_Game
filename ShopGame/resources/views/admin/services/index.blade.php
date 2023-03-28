@@ -34,7 +34,9 @@
         <div class="flex-initial w-full ">
             <x-partials.navbar>
             </x-partials.navbar>
-            <livewire:admin.user-component />
+
+            <livewire:admin.game-service-sell-silver-component />
+
         </div>
 
     </div>

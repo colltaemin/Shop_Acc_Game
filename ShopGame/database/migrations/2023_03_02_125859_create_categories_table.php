@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('sever');
             $table->string('weapon');
-            $table->string('rank');
+            $table->string('rank')->nullable();
             $table->string('class');
             $table->string('status');
             $table->string('detail');
