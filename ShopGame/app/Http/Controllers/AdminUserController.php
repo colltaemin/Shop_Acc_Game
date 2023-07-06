@@ -1,7 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -19,17 +23,19 @@ class AdminUserController extends Controller
     {
         $user = DB::table('users')->where('id', $id)->first();
 
-        return view('admin.users.edit', ['user' => $user]);
+        $roles = Role::all();
+
+        return view('admin.users.edit', ['user' => $user, 'roles' => $roles]);
     }
 
     public function update(Request $request, $id)
     {
         try {
             DB::beginTransaction();
-            $money_add = $request->money;
-            $user = DB::table('users')->where('id', $id)->first();
-            $money = $user->money + $money_add;
-            DB::table('users')->where('id', $id)->update(['money' => $money]);
+
+            $user = User::findOrFail($id);
+
+            $user->roles()->sync($request->role_id);
 
             DB::commit();
 

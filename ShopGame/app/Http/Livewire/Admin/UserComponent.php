@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Livewire\Admin;
 
 use App\Models\User;
@@ -14,10 +16,10 @@ class UserComponent extends Component
 
     public $user;
 
-    public $confirmingUserAddAmount = false;
+    public $confirmUserAddRole = false;
 
     protected $rules = [
-        'user.money' => 'required',
+        'role' => 'required',
     ];
 
     public function render()
@@ -31,24 +33,13 @@ class UserComponent extends Component
         return view('livewire.admin.user-component', ['users' => $users]);
     }
 
-    public function confirmUserAddAmount(User $user)
+    public function confirmUserAddRole(User $user): void
     {
+        // dd($user);
         $this->user = $user;
-        $this->confirmingUserAddAmount = $this->user->id;
     }
 
-    public function saveUser($id)
+    public function saveRole(): void
     {
-        $users = User::find($id);
-
-        $users->money = $this->user->money;
-
-        $users->update([
-            'money' => $users->money,
-        ]);
-
-        $users->save();
-
-        $this->confirmingUserAddAmount = false;
     }
 }

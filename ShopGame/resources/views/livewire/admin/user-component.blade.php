@@ -1,5 +1,4 @@
 <div>
-
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg pt-2 m-5">
         <div class="flex justify-center flex-1 lg:mr-32 pb-5">
             <div class="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
@@ -26,7 +25,7 @@
                         User Name
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        The remaining amount
+                        Role User
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Date created
@@ -47,52 +46,50 @@
                             {{ $user->name }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $user->money }}
+                            @foreach ($user->roles as $role)
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    {{ $role->name }}
+                                </span>
+                            @endforeach
+
                         </td>
                         <td class="px-6 py-4">
                             {{ $user->created_at }}
                         </td>
                         <td class="px-6 py-4 text-right">
-                            <button wire:click="confirmUserAddAmount({{ $user->id }})"
-                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Add More
-                                Amount</button>
+                            <a href="{{ route('admin.users.edit', $user->id) }}">
+                                <button
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                    Edit
+                                </button>
+                            </a>
+
                         </td>
                     </tr>
                 @endforeach
-
-
             </tbody>
-
         </table>
-
     </div>
     <div class="pagination m-5">
         {{ $users->links('pagination::tailwind') }}
     </div>
-
-    <x-dialog-modal wire:model="confirmingUserAddAmount">
+    {{-- <x-dialog-modal wire:model.debounce.1000ms="confirmUserAddRole">
         <x-slot name="title">
             {{ __('Add Amount For User') }}
         </x-slot>
-
         <x-slot name="content">
-            <x-label for="email" value="{{ __('Amount') }}" />
-            <x-input id="email" type="number" class="mt-1 block w-full" wire:model.lazy="user.money" />
-            <x-input-error for="money" class="mt-2" />
-        </x-slot>
+            <x-label for="email" value="" />
 
+        </x-slot>
         <x-slot name="footer">
-            <x-secondary-button wire:click="$set('confirmingUserAddAmount', false)" wire:loading.attr="disabled">
+            <x-secondary-button wire:click="$set('confirmUserAddRole', false)" wire:loading.attr="disabled">
                 {{ __('Cancel') }}
             </x-secondary-button>
-
-            <x-secondary-button class="ml-3" wire:click="saveUser({{ $confirmingUserAddAmount }})"
+            <x-secondary-button class="ml-3" wire:click="saveUser({{ $confirmUserAddRole }})"
                 wire:loading.attr="disabled">
                 {{ __('Save') }}
             </x-secondary-button>
         </x-slot>
-    </x-dialog-modal>
-
-
-
+    </x-dialog-modal> --}}
 </div>

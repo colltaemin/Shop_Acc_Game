@@ -13,12 +13,11 @@ return new class() extends Migration
      */
     public function up(): void
     {
-        Schema::create('game_service_sell_silver', function (Blueprint $table): void {
-            $table->id();
-            $table->unsignedBigInteger('productService_id');
-            $table->string('sever');
-            $table->integer('multiplier');
-            $table->timestamps();
+        Schema::create('role_users', function (Blueprint $table): void {
+            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('user_id');
+
+            $table->primary(['role_id', 'user_id']);
         });
     }
 
@@ -27,6 +26,6 @@ return new class() extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('game_service_sell_silver');
+        Schema::dropIfExists('role_users');
     }
 };

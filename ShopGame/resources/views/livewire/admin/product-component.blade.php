@@ -14,7 +14,6 @@
                     type="search" placeholder="Search for projects" aria-label="Search" />
             </div>
         </div>
-
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
 
             <thead class="text-xs text-gray-700 uppercase bg-gray-300  dark:bg-gray-700 dark:text-gray-400">
@@ -22,7 +21,6 @@
                     <th scope="col" class="px-6 py-3">
                         Product Name
                     </th>
-
                     <th scope="col" class="px-6 py-3">
                         Current Account
                     </th>
@@ -32,11 +30,9 @@
                     <th scope="col" class="px-6 py-3">
                         Created At
                     </th>
-
                     <th scope="col" class="px-6 py-3">
                         <span class="">Action</span>
                     </th>
-
                 </tr>
             </thead>
             <tbody>
@@ -63,17 +59,12 @@
                         </td>
                     </tr>
                 @endforeach
-
-
             </tbody>
-
         </table>
-
     </div>
     <div class="pagination m-5">
         {{ $products->links('pagination::tailwind') }}
     </div>
-
     <!-- Delete Product Confirmation Modal -->
     <x-dialog-modal wire:model="confirmingProductDeletion">
         <x-slot name="title">
@@ -83,7 +74,6 @@
         <x-slot name="content">
             {{ __('Are you sure you want to delete your product?') }}
         </x-slot>
-
         <x-slot name="footer">
             <x-secondary-button wire:click="$set('confirmingProductDeletion', false)" wire:loading.attr="disabled">
                 {{ __('Cancel') }}
@@ -94,5 +84,4 @@
             </x-danger-button>
         </x-slot>
     </x-dialog-modal>
-
 </div>

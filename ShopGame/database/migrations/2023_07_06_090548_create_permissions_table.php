@@ -13,11 +13,9 @@ return new class() extends Migration
      */
     public function up(): void
     {
-        Schema::create('game_service_sell_silver', function (Blueprint $table): void {
+        Schema::create('permissions', function (Blueprint $table): void {
             $table->id();
-            $table->unsignedBigInteger('productService_id');
-            $table->string('sever');
-            $table->integer('multiplier');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class() extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('game_service_sell_silver');
+        Schema::dropIfExists('permissions');
     }
 };
