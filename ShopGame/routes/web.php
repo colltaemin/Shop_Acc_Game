@@ -46,7 +46,7 @@ Route::get('/admin/users/{id}/edit', [AdminUserController::class, 'edit'])->name
 Route::put('/admin/users/update{id}', [AdminUserController::class, 'update'])->name('admin.users.update');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (): void {
-    Route::get('/accounts', [AdminCategoryController::class, 'index'])->name('accounts.index');
+    Route::get('/accounts', [AdminCategoryController::class, 'index'])->name('accounts.index')->middleware('can:account.show');
     Route::get('/accounts-lang-la/create', [AdminCategoryController::class, 'create'])->name('accounts-lang-la.create');
     Route::get('/accounts-ninja/create', [AdminCategoryController::class, 'add'])->name('accounts-ninja.create');
     Route::post('/accounts/store', [AdminCategoryController::class, 'store'])->name('accounts.store');
@@ -57,7 +57,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (): void {
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (): void {
-    Route::get('/products', [AdminProductController::class, 'index'])->name('admin.products.index');
+    Route::get('/products', [AdminProductController::class, 'index'])->name('admin.products.index')->middleware('can:product.show');
     Route::get('/products/create', [AdminProductController::class, 'create'])->name('admin.products.create');
     Route::post('/products/store', [AdminProductController::class, 'store'])->name('admin.products.store');
     Route::get('/products/{id}/edit', [AdminProductController::class, 'edit'])->name('admin.products.edit');

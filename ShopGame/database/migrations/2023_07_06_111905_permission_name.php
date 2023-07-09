@@ -30,15 +30,6 @@ return new class() extends Migration
             'name' => 'product.delete',
         ]);
         \App\Models\Permission::create([
-            'name' => 'role.show',
-        ]);
-        \App\Models\Permission::create([
-            'name' => 'role.edit',
-        ]);
-        \App\Models\Permission::create([
-            'name' => 'role.delete',
-        ]);
-        \App\Models\Permission::create([
             'name' => 'account.show',
         ]);
         \App\Models\Permission::create([
@@ -47,6 +38,16 @@ return new class() extends Migration
         \App\Models\Permission::create([
             'name' => 'account.delete',
         ]);
+        \App\Models\Permission::create([
+            'name' => 'role.show',
+        ]);
+        \App\Models\Permission::create([
+            'name' => 'role.edit',
+        ]);
+        \App\Models\Permission::create([
+            'name' => 'role.delete',
+        ]);
+
         \App\Models\Role::create([
             'name' => 'admin',
             'description' => 'Quản trị viên',
